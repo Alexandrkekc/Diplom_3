@@ -21,13 +21,13 @@ public class ConstructorPage {
 
     private final By inputInAccountButton = By.xpath(".//button[@class = 'button_button__33qZ0 button_button_type_primary__1O7Bx button_button_size_large__G21Vg' and text() = 'Войти в аккаунт']");
     private final By createOrderButton = By.xpath(".//button[@class = 'button_button__33qZ0 button_button_type_primary__1O7Bx button_button_size_large__G21Vg' and text() = 'Оформить заказ']");
-    private final By personalAccountButton = By.xpath(".//p[@class = 'AppHeader_header__linkText__3q_va ml-2' and text() = 'Личный Кабинет']");
+    private final By personalAccountButton = By.xpath(".//*[text() = 'Личный Кабинет']"); //By.xpath(".//p[@class = 'AppHeader_header__linkText__3q_va ml-2' and text() = 'Личный Кабинет']");
     private final By sauceButton = By.xpath(".//span[@class = 'text text_type_main-default' and text() = 'Соусы']");
     private final By fillingButton = By.xpath(".//span[@class = 'text text_type_main-default' and text() = 'Начинки']");
     private final By bunButton = By.xpath(".//span[@class = 'text text_type_main-default' and text() = 'Булки']");
-    private final By sauceСhapter = By.xpath(".//h2[@class = 'text text_type_main-medium mb-6 mt-10' and text() = 'Соусы']");
-    private final By fillingСhapter = By.xpath(".//h2[@class = 'text text_type_main-medium mb-6 mt-10' and text() = 'Начинки']");
-    private final By bunСhapter = By.xpath(".//h2[@class = 'text text_type_main-medium mb-6 mt-10' and text() = 'Булки']");
+    private final By sauceChapter = By.xpath(".//h2[@class = 'text text_type_main-medium mb-6 mt-10' and text() = 'Соусы']");
+    private final By fillingChapter = By.xpath(".//h2[@class = 'text text_type_main-medium mb-6 mt-10' and text() = 'Начинки']");
+    private final By bunChapter = By.xpath(".//h2[@class = 'text text_type_main-medium mb-6 mt-10' and text() = 'Булки']");
 
 
     @Step("Открыть страницу конструктора")
@@ -39,7 +39,7 @@ public class ConstructorPage {
 
     @Step("Проверка текста кнопки Оформить заказ")
     public Object checkOrderButtonText() {
-        WebElement textButton = new WebDriverWait(driver, Duration.ofSeconds(10))
+        WebElement textButton = new WebDriverWait(driver, Duration.ofSeconds(15))
                 .until(ExpectedConditions.visibilityOfElementLocated(createOrderButton));
 
         return textButton.getText();
@@ -75,27 +75,18 @@ public class ConstructorPage {
         return this;
     }
 
-    @Step("Проверка текста раздела Соусы")
-    public Object checkSauceText() {
-        WebElement textButton = new WebDriverWait(driver, Duration.ofSeconds(10))
-                .until(ExpectedConditions.visibilityOfElementLocated(sauceСhapter));
-
-        return textButton.getText();
+    @Step("Проверка отображения текста раздела Соусы")
+    public boolean checkSauceText() {
+        return driver.findElement(sauceChapter).isDisplayed();
     }
 
-    @Step("Проверка текста раздела Начинки")
-    public Object checkFillingText() {
-        WebElement textButton = new WebDriverWait(driver, Duration.ofSeconds(10))
-                .until(ExpectedConditions.visibilityOfElementLocated(fillingСhapter));
-
-        return textButton.getText();
+    @Step("Проверка отображения текста раздела Начинки")
+    public boolean checkFillingText() {
+        return driver.findElement(fillingChapter).isDisplayed();
     }
 
-    @Step("Проверка текста раздела Булки")
-    public Object checkBunText() {
-        WebElement textButton = new WebDriverWait(driver, Duration.ofSeconds(10))
-                .until(ExpectedConditions.visibilityOfElementLocated(bunСhapter));
-
-        return textButton.getText();
+    @Step("Проверка отображения текста раздела Булки")
+    public boolean checkBunText() {
+        return driver.findElement(bunChapter).isDisplayed();
     }
 }

@@ -1,4 +1,3 @@
-import io.qameta.allure.junit4.DisplayName;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -16,7 +15,6 @@ import static org.junit.Assert.assertEquals;
 
 public class LoginTest {
 
-    WebDriverCreator webDriverCreator = new WebDriverCreator();
     private WebDriver driver;
     private LoginPage loginPage;
     private String name;
@@ -25,7 +23,7 @@ public class LoginTest {
 
     @Before
     public void createNewChromeDriver() {
-        driver = webDriverCreator.createWebDriver();
+        driver = WebDriverCreator.createWebDriver();
         RandomUser randomUser = new RandomUser();
         name = randomUser.getName();
         email = randomUser.getEmail();

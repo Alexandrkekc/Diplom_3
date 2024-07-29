@@ -15,7 +15,6 @@ import static org.junit.Assert.assertEquals;
 
 public class RegistrationTest {
 
-    WebDriverCreator webDriverCreator = new WebDriverCreator();
     private WebDriver driver;
     private RegistrationPage registrationPage;
     private String name;
@@ -24,7 +23,7 @@ public class RegistrationTest {
 
     @Before
     public void createNewChromeDriver() {
-        driver = webDriverCreator.createWebDriver();
+        driver = WebDriverCreator.createWebDriver();
         RandomUser randomUser = new RandomUser();
         name = randomUser.getName();
         email = randomUser.getEmail();
