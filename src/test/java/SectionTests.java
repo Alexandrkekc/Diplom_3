@@ -22,14 +22,14 @@ public class SectionTests {
     public void transactionToSauceCheck() {
         constructorPage.openConstructorPage()
                 .clickSauceButton();
-        assertTrue(constructorPage.checkSauceText());
+        assertTrue(constructorPage.checkActiveSauce());
     }
 
     @Test
     public void transactionToFillingCheck() {
         constructorPage.openConstructorPage()
                 .clickFillingButton();
-        assertTrue(constructorPage.checkFillingText());
+        assertTrue(constructorPage.checkActiveFilling());
     }
 
     @Test
@@ -37,7 +37,7 @@ public class SectionTests {
         constructorPage.openConstructorPage()
                 .clickFillingButton()
                 .clickBunButton();
-        assertTrue(constructorPage.checkBunText());
+        assertTrue(constructorPage.checkActiveBun());
     }
 
     @After
