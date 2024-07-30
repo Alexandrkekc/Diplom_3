@@ -22,7 +22,7 @@ public class ConstructorPage {
     private final By inputInAccountButton = By.xpath(".//button[@class = 'button_button__33qZ0 button_button_type_primary__1O7Bx button_button_size_large__G21Vg' and text() = 'Войти в аккаунт']");
     private final By createOrderButton = By.xpath(".//button[@class = 'button_button__33qZ0 button_button_type_primary__1O7Bx button_button_size_large__G21Vg' and text() = 'Оформить заказ']");
     private final By personalAccountButton = By.xpath(".//*[text() = 'Личный Кабинет']");
-    private final By sauceButton = By.xpath(".//span[@class = 'text text_type_main-default' and text() = 'Соусы']");
+    private final By sauceButton = By.xpath(".//span[@class = 'text text_type_main-default' and text() = 'Соусы']/parent::div");
     private final By fillingButton = By.xpath(".//span[@class = 'text text_type_main-default' and text() = 'Начинки']");
     private final By bunButton = By.xpath(".//span[@class = 'text text_type_main-default' and text() = 'Булки']");
     private final By sauceSelect = By.xpath(".//div[contains(@class, 'tab_tab_type_current__2BEPc')]/span[text()='Соусы']");
@@ -78,17 +78,17 @@ public class ConstructorPage {
 
     @Step
     public boolean checkActiveSauce() {
-        return !driver.findElements(sauceSelect).isEmpty() && driver.findElements(sauceSelect).size() < 2;
+        return driver.findElements(sauceSelect).size() == 1;
     }
 
     @Step
     public boolean checkActiveFilling() {
-        return !driver.findElements(fillingSelect).isEmpty() && driver.findElements(fillingSelect).size() < 2;
+        return driver.findElements(fillingSelect).size() == 1;
     }
 
     @Step
     public boolean checkActiveBun() {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
-        return !driver.findElements(bunSelect).isEmpty() && driver.findElements(bunSelect).size() < 2;
+        return driver.findElements(bunSelect).size() == 1;
     }
 }
