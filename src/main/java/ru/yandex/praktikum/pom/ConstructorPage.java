@@ -76,14 +76,17 @@ public class ConstructorPage {
         return this;
     }
 
+    @Step
     public boolean checkActiveSauce() {
         return !driver.findElements(sauceSelect).isEmpty() && driver.findElements(sauceSelect).size() < 2;
     }
 
+    @Step
     public boolean checkActiveFilling() {
         return !driver.findElements(fillingSelect).isEmpty() && driver.findElements(fillingSelect).size() < 2;
     }
 
+    @Step
     public boolean checkActiveBun() {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
         return !driver.findElements(bunSelect).isEmpty() && driver.findElements(bunSelect).size() < 2;
